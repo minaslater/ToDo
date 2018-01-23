@@ -31,7 +31,8 @@
     <script type="text/javascript" src="https://haganka.github.io/dom/dom.js"></script>
     <script type="text/javascript">
         var time = moment().format('LT');
-        var toDoList = [];
+        //var toDoList = [];
+        var toDoHTML = "";
 
         var setTime = function() {
             time = moment().format('LT');
@@ -40,8 +41,10 @@
 
         var addToList = function() {
             var userInput = prompt("What do you wanna do?");
-
-            console.log(userInput);
+            //toDoList.push(userInput);
+            //console.log(toDoList);
+            toDoHTML += "<li>" + userInput + "</li>";
+            $("#todo").html(toDoHTML);
         }
 
         setInterval(setTime, 1000);
