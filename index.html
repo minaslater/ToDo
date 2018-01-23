@@ -2,54 +2,55 @@
 <html>
 
 <head>
-    <title></title>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2">
-                <h2 id="todo-title">Todo</h2>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2">
+        <h2 id="todo-title">Todo</h2>
 
-                <!-- <div id="todo-container" class="hide"> -->
-                <div id="todo-container">
-                    <ul id="todo">
-                    </ul>
-                    <p id="plus">+</p>
-                </div>
-            </div>
+        <div id="todo-container" class="hide">
+          <div id="todo-box">
+            <ul id="todo">
+            </ul>
+            <p id="plus">+</p>
+          </div>
         </div>
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3 text-center">
-                <h1 id="time"></h1>
-            </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center">
+          <h1 id="time"></h1>
         </div>
+      </div>
     </div>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.js"></script>
     <script type="text/javascript" src="https://haganka.github.io/dom/dom.js"></script>
     <script type="text/javascript">
-        var time = moment().format('LT');
-        //var toDoList = [];
-        var toDoHTML = "";
+      var time = moment().format('LT');
+      var toDoHTML = "";
 
-        var setTime = function() {
-            time = moment().format('LT');
-            $("#time").text(time);
-        }
+      var setTime = function () {
+        time = moment().format('LT');
+        $("#time").text(time);
+      }
 
-        var addToList = function() {
-            var userInput = prompt("What do you wanna do?");
-            //toDoList.push(userInput);
-            //console.log(toDoList);
-            toDoHTML += "<li>" + userInput + "</li>";
-            $("#todo").html(toDoHTML);
-        }
+      var addToList = function () {
+        var userInput = prompt("What do you wanna do?");
+        toDoHTML += "<li>" + userInput + "</li>";
+        $("#todo").html(toDoHTML);
+      }
 
-        setInterval(setTime, 1000);
-        $("#plus").on("click", addToList);
+      var toggleHide = function() {
+        $("#todo-container").toggle("hide");
+      }
 
+      setInterval(setTime, 1000);
+      $("#plus").on("click", addToList);
+      $("#todo-title").on("click", toggleHide);
     </script>
 </body>
 
